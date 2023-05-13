@@ -49,7 +49,7 @@ class Post(models.Model):
         self.save()
 
     def preview(self):
-        return self.text[0:123] + '...' 
+        return self.text[0:123] + '...'
 
 
 class PostCategory(models.Model):
