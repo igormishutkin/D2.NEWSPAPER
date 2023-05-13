@@ -1,0 +1,37 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+
+
+class Author(models.Model):
+    authorUser = models.OneToOneField(User, on_delete=models.CASCADE)
+    ratingAuthor = models.SmallIntegerField(default=0)
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=64, unique = True)
+
+
+class Post(models.Model):
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    ARTICLE = 'AR'
+    NEWS = 'NW'
+    CATEGORY_CHOICES = (
+        (ARTICLE, 'Статья'),
+        (NEWS, 'Новость'),
+    )
+    categoryType = models/CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE)
+    dateCreation = models.DateTimeField(auto_now_add=True)
+    postCategory = models.ManyToManyField(Category, through='PostCategory')
+    title = models.CharField(max_length=128)
+    text = models.TextField()
+    rating = models.SmallIntegerField(default=0)
+
+
+class PostCategory(models.Model):
+    postThrough = models.ForeignKey(Post, on_delete=models.CASCADE)
+    categoryThrough = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+
+class Comment(models.Model):
+    pass
