@@ -48,7 +48,7 @@ class Order(models.Model):
         if self.complete: # если завершён, возвращаем разность объектов
             return (self.time_out - self.time_in).total_seconds() // 60
         else: # если ещё нет, то сколько длится выполнение
-            return (datetime.now() - self.time_in).total_seconts() // 60
+            return (datetime.now() - self.time_in).total_seconds() // 60
 
 class ProductOrder(models.Model):
     product = models.ForeignKey(Product, on_delete = models.CASCADE)
