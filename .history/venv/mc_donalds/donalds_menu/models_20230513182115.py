@@ -1,0 +1,26 @@
+from django.db import models # импорт
+
+class Order(models.Model): # наследуемся от класса Model
+    pass
+
+class Product(models.Model):
+    name = models.CharField(max_length = 255)
+    price = models.FloatField(default = 0.0)
+
+class Staff(models.Model):
+    director = 'DI'
+    admin = 'AD'
+    cook = 'CO'
+    cashier = 'CA'
+    cleaner = 'CL'
+
+    POSITIONS = [
+        (director, 'Директор'),
+        (admin, 'Администратор'),
+        (cook, 'Повар'),
+        (cashier, 'Кассир'),
+        (cleaner, 'Уборщик')
+    ]
+
+class ProductOrder(models.Model):
+    pass
